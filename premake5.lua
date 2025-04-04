@@ -1,9 +1,11 @@
 require "clean"
 require "vscode"
 
-workspace "DummyWorkspace"
-    location "Generated"
-    cppdialect "C++17"
+workspace "Workspace"
+
+    cppdialect "C++23"
+    warnings "Extra"
+    fatalwarnings { "All" }
     configurations
     {
         "debug",
@@ -17,15 +19,18 @@ workspace "DummyWorkspace"
         runtime "Debug"
         defines { "DEBUG" }
         symbols "On"
+        optimize "Off"
+
     filter "configurations:release"
         runtime "Release"
         defines { "NDEBUG" }
         optimize "On"
 
+    rootPath = path.getdirectory(_SCRIPT)
     targetBuildPath = path.getdirectory(_SCRIPT) .. "/Build/target"
     objBuildPath = path.getdirectory(_SCRIPT) .. "/Build/obj"
 
 include "External"
-include "DummyLib"
-include "DummyApp"
-include "DummyTest"
+include "Library"
+include "Application"
+include "Test"

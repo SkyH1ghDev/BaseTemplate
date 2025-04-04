@@ -5,6 +5,8 @@ newaction {
         os.rmdir("./Generated")
         os.rmdir("./.vscode")
         os.rmdir("./.vs")
+        os.rmdir("./.idea")
         os.rmdir("./Build")
+        os.remove("*.sln")
     end
 }

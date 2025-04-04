@@ -1,6 +1,9 @@
-project "DummyLib"
+project "Library"
+
     kind "StaticLib"
+    location(rootPath .. "/Generated")
+
     targetdir(targetBuildPath .. "/%{prj.name}")
     objdir(objBuildPath .. "/%{prj.name}")
-    files {"include/**.h", "src/**.cpp"}
+    files {"include/**.hpp", "src/**.cpp"}
     includedirs{"include/"}

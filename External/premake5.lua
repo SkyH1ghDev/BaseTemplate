@@ -1,4 +1,8 @@
 project "googletest"
+
+    kind "StaticLib"
+    location(rootPath .. "/Generated")
+
     targetdir(targetBuildPath .. "/External")
     objdir(objBuildPath .. "/%{prj.name}")
 
@@ -8,7 +12,7 @@ project "googletest"
         kind "Utility"
         prebuildcommands{
             "{MKDIR} %{prj.objdir}",
-            "cmake -S " .. googletestDirectory .. " -B %{prj.objdir} -DCMAKE_INSTALL_PREFIX=%{prj.targetdir}",
+            "cmake -S " .. googletestDirectory .. " -B %{prj.objdir} -DCMAKE_INSTALL_PREFIX=%{prj.targetdir} -DCMAKE_MSVC_RUNTIME_LIBRARY='MultiThreadedDebug'",
             "cmake --build %{prj.objdir} --config %{cfg.buildcfg} --target install",
         }
 
