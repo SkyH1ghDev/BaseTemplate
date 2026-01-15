@@ -118,7 +118,7 @@ As every library is different with wildly varying ways of compilation and standa
 Below you will find some somewhat generalised templates for different types of libraries.
 
 
-##### Cmake
+##### CMake
 ```lua
     project "[project name]"
 
