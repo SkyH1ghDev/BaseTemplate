@@ -134,7 +134,7 @@ Below you will find some somewhat generalised templates for different types of l
             kind "Utility"
             prebuildcommands{
                 "{MKDIR} %{prj.objdir}",
-                "cmake -S " .. AddQuotation(libDirectory) .. " -B %{prj.objdir} -DCMAKE_INSTALL_PREFIX=%{prj.targetdir} [CMake options that may be relevant] -DCMAKE_MSVC_RUNTIME_LIBRARY='MultiThreadedDebug'",
+                "cmake -S " .. AddQuotation(libDirectory) .. " -B %{prj.objdir} [CMake options that may be relevant] -DCMAKE_INSTALL_PREFIX=%{prj.targetdir} -DCMAKE_MSVC_RUNTIME_LIBRARY='MultiThreadedDebug'",
                 "cmake --build %{prj.objdir} --config %{cfg.buildcfg} --target install",
             }
 
