@@ -1,14 +1,15 @@
-require "clean"
-require "vscode"
+require "Premake/clean"
+require "Premake/helper"
 
 workspace "Workspace"
 
     location("Generated")
     cppdialect "C++23"
     warnings "Extra"
-    fatalwarnings { "All" }
-    configurations
-    {
+    fatalwarnings "All"
+    externalwarnings "Off"
+
+    configurations {
         "debug",
         "release"
     }
@@ -28,8 +29,9 @@ workspace "Workspace"
         optimize "On"
 
     rootPath = path.getdirectory(_SCRIPT)
-    targetBuildPath = path.getdirectory(_SCRIPT) .. "/Build/target"
-    objBuildPath = path.getdirectory(_SCRIPT) .. "/Build/obj"
+    projectPath = rootPath .. "/Generated"
+    targetBuildPath = rootPath .. "/Build/target"
+    objBuildPath = rootPath .. "/Build/obj"
 
 include "External"
 include "Library"

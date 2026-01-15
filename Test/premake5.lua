@@ -1,14 +1,34 @@
 project "Test"
 
     kind "ConsoleApp"
-    location(rootPath .. "/Generated/Projects")
+    location(projectPath)
 
     targetdir(targetBuildPath .. "/%{prj.name}")
     objdir(objBuildPath .. "/%{prj.name}")
-    files {"src/**.h", "src/**.cpp"}
-    includedirs{"../Library/include", targetBuildPath .. "/External/include"}
 
-    libdirs{targetBuildPath .. "/External/lib"}
+    files {
+        "src/**.hpp",
+        "src/**.cpp"
+    }
 
-    dependson {"GoogleTest", "Library"}
-    links{"Library", "gtest"}
+    includedirs {
+        "../Library/include",
+        targetBuildPath .. "/External/include"
+    }
+
+    libdirs {
+        targetBuildPath .. "/External/lib",
+        targetBuildPath .. "/Library"
+    }
+
+    dependson {
+        "GoogleTest",
+        "Library"
+    }
+
+    -- Sometimes libraries cannot be found even though the library directory has been specified in libdirs{}.
+    -- AddQuotation adds quotes around the library strings, fixing the issue for some currently unknown reason.
+    links {
+        AddQuotation("Library"),
+        AddQuotation("gtest")
+    }

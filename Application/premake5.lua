@@ -1,11 +1,22 @@
 project "Application"
 
     kind "ConsoleApp"
-    location(rootPath .. "/Generated/Projects")
+    location(projectPath)
 
     targetdir(targetBuildPath .. "/%{prj.name}")
+    debugdir(targetBuildPath .. "/%{prj.name")
     objdir(objBuildPath .. "/%{prj.name}")
-    files {"src/**.hpp", "src/**.cpp"}
-    includedirs{"../Library/include"}
+    files {
+        "src/**.hpp",
+        "src/**.cpp"
+    }
 
-    links{"Library"}
+    includedirs {
+        "../Library/include"
+    }
+
+    links {
+        AddQuotation("Library")
+    }
+
+
