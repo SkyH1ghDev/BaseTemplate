@@ -11,8 +11,12 @@ project "Application"
         "src/**.cpp"
     }
 
+    libdirs {
+        targetBuildPath .. "/Library"
+    }
     includedirs {
-        "../Library/include"
+        "../Library/include",
+        targetBuildPath .. "/External/include"
     }
 
     links {
