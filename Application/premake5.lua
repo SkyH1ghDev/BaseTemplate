@@ -19,6 +19,10 @@ project "Application"
         targetBuildPath .. "/External/include"
     }
 
+    dependson {
+        "Library"
+    }
+
     links {
         AddQuotation("Library")
     }
